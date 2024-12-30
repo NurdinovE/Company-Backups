@@ -1,0 +1,1458 @@
+/* $Id$ */
+
+.micsDiv {
+  font-size: 12px;
+  position: fixed;
+  z-index: 10000000;
+}
+
+.micshidden {
+  cursor: pointer;
+  overflow:hidden;
+}
+
+
+.micsBox{
+	transition:200ms;
+}
+
+.micshidden .micsBox{
+	opacity:0;
+}
+
+.micswrap{
+  white-space:nowrap;
+}
+
+.micscontent{
+  overflow:hidden;
+}
+
+.micscontent * {
+  display: inline-block;
+}
+
+.micsiframeDiv{
+  display:none;
+}
+
+.micscontent a {
+  text-decoration: none;
+}
+.micscontent a:hover {
+  text-decoration: underline;
+}
+
+.micsheader {
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.micstoggle {
+  cursor: pointer;
+}
+.micstoggle:before {
+  content: " Hide ";
+}
+
+.micsaction {
+  font-size: 10px;
+}
+
+.micsaction > * {
+  padding: 3px;
+}
+
+.micsaction > *:hover {
+  transform:scale(1.1);
+  font-weight:bold;
+}
+
+.micsclose {
+  cursor: pointer;
+}
+
+.micsclose:before {
+  content: " Close ";
+}
+
+.micscloseSymbol:before {
+  content: " X  ";
+}
+
+.micstoggleSymbol:before{
+  content:" V ";
+  display:inline-block;
+}
+
+.micsTop .micstoggleSymbol:before{
+  transform:rotate(180deg);
+}
+
+.micsLeft .micstoggleSymbol:before{
+  transform:rotate(90deg);
+}
+
+.micsRight .micstoggleSymbol:before{
+  transform:rotate(270deg);
+}
+
+
+
+.micsTop {
+  top: 0;
+  left: 0;
+  border-bottom: 4px solid;
+  border-top-left-radius: 0px !important;
+  border-top-right-radius: 0px !important;
+  -webkit-transform-origin: top;
+          transform-origin: top;
+  -webkit-transition: 200ms ease-in-out;
+  transition: 200ms ease-in-out;
+  -webkit-transform: scaleY(1);
+          transform: scaleY(1);
+}
+.micsTop.micshddn {
+  -webkit-transform: scaleY(0);
+          transform: scaleY(0);
+}
+
+.micsBottom {
+  bottom: 0;
+  left: 0;
+  border-top: 4px solid;
+  border-bottom-left-radius: 0px !important;
+  border-bottom-right-radius: 0px !important;
+  -webkit-transition: 200ms ease-in-out;
+  transition: 200ms ease-in-out;
+  -webkit-transform-origin: bottom;
+          transform-origin: bottom;
+  -webkit-transform: scaleY(1);
+          transform: scaleY(1);
+}
+.micsBottom .micsarw {
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
+}
+.micsBottom.micshddn {
+  -webkit-transform: scaleY(0);
+          transform: scaleY(0);
+}
+
+.micsTop, .micsBottom {
+  width: 100%;
+}
+.micsTop.micshidden, .micsBottom.micshidden {
+  min-height: 0px;
+  height: 0px;
+}
+
+.micsTop.micshidden:hover, .micsBottom.micshidden:hover {
+  min-height: 15px;
+  height: 15px;
+}
+
+.micsTop .micsBox, .micsBottom .micsBox {
+  min-height:30px;
+  margin: 3px;
+  padding: 3px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  list-style-type: none;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row wrap;
+          flex-flow: row wrap;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.micsTop .micsimage, .micsBottom .micsimage {
+  -webkit-box-flex: auto;
+      -ms-flex: auto;
+          flex: auto;
+  -webkit-box-ordinal-group: 1;
+      -ms-flex-order: 0;
+          order: 0;
+	text-align:center;
+}
+.micsTop .micsimage img, .micsBottom .micsimage img {
+  width: 50px;
+  height: 25px;
+}
+.micsTop .micsaction, .micsBottom .micsaction {
+  -webkit-box-ordinal-group: 4;
+      -ms-flex-order: 3;
+          order: 3;
+  -webkit-box-flex: 2;
+      -ms-flex: 2 10px;
+          flex: 2 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row wrap;
+          flex-flow: row wrap;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+}
+.micsTop .micsheader, .micsBottom .micsheader {
+  -webkit-box-flex: 1;
+      -ms-flex: 1 auto;
+          flex: 1 auto;
+}
+
+.micsTop .micsinner, .micsBottom .micsinner {
+  -webkit-box-flex: 100;
+      -ms-flex: 100 auto;
+          flex: 100 auto;
+}
+
+
+.micsTop .micscontent, .micsBottom .micscontent {
+  -webkit-box-ordinal-group: 3;
+      -ms-flex-order: 2;
+          order: 2;
+  -webkit-box-flex: 20;
+      -ms-flex: 20;
+          flex: 20;
+  text-align: center;
+  display:flex;
+  align-items:center;
+  flex-flow:row wrap;
+}
+.micsTop .micsinner > *, .micsBottom .micsinner > * {
+  padding: 0px 2px;
+}
+
+.micsLeft .micscontent > *, .micsRight .micscontent > * {
+  padding: 2px 10px;
+}
+
+
+
+.micsLeft, .micsRight {
+  width: 400px;
+  margin: 0;
+  padding: 0;
+}
+.micsLeft.micshidden, .micsRight.micshidden {
+  min-width: 0px;
+  width: 0px !important;
+}
+
+.micsLeft.micshidden:hover, .micsRight.micshidden:hover {
+  min-width: 15px;
+  width: 15px;
+}
+
+.micsLeft .micsBox, .micsRight .micsBox {
+  padding: 10px;
+  margin: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  list-style-type: none;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row nowrap;
+          flex-flow: row nowrap;
+}
+.micsLeft .micsimage, .micsRight .micsimage {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-flex: auto;
+      -ms-flex: auto;
+          flex: auto;
+  -webkit-box-ordinal-group: 2;
+      -ms-flex-order: 1;
+          order: 1;
+}
+.micsLeft .micsimage img, .micsRight .micsimage img {
+  width: 50px;
+  height: 20px;
+}
+.micsLeft .micsclose, .micsRight .micsclose {
+  -webkit-box-ordinal-group: 2;
+      -ms-flex-order: 1;
+          order: 1;
+}
+.micsLeft .micstoggle, .micsRight .micstoggle {
+  -webkit-box-ordinal-group: 3;
+      -ms-flex-order: 2;
+          order: 2;
+}
+.micsLeft .micsaction, .micsRight .micsaction {
+  -webkit-box-ordinal-group: 3;
+      -ms-flex-order: 2;
+          order: 2;
+  -webkit-box-flex:auto;
+      -ms-flex:auto;
+          flex:auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column nowrap;
+          flex-flow: column nowrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  text-decoration: none;
+  text-align: center;
+}
+.micsLeft .micscontent, .micsRight .micscontent {
+  -webkit-box-ordinal-group: 3;
+      -ms-flex-order: 2;
+          order: 2;
+  -webkit-box-flex: 10;
+      -ms-flex: 10 265px;
+          flex: 10 265px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column nowrap;
+          flex-flow: column nowrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: center;
+}
+
+
+.micsLeft .micsdesc,.micsRight .micsdesc{
+	padding-right:5px;
+}
+
+
+.micsRight {
+  right: 0;
+  bottom: 200px;
+  border-left: 4px solid;
+  border-top-right-radius: 0px !important;
+  border-bottom-right-radius: 0px !important;
+  -webkit-transition: 200ms ease-in-out;
+  transition: 200ms ease-in-out;
+  -webkit-transform-origin: right;
+          transform-origin: right;
+  -webkit-transform: scaleX(1);
+          transform: scaleX(1);
+}
+.micsRight .micsarw {
+  -webkit-transform: rotate(90deg);
+          transform: rotate(90deg);
+}
+.micsRight.micshddn {
+  -webkit-transform: scaleX(0);
+          transform: scaleX(0);
+}
+.micsRight .micsaction {
+  text-align: right;
+}
+
+.micsLeft {
+  left: 0;
+  bottom: 200px;
+  border-right: 4px solid;
+  border-top-left-radius: 0px !important;
+  border-bottom-left-radius: 0px !important;
+  -webkit-transition: 200ms ease-in-out;
+  transition: 200ms ease-in-out;
+  -webkit-transform-origin: left;
+          transform-origin: left;
+  -webkit-transform: scaleX(1);
+          transform: scaleX(1);
+}
+.micsLeft .micsarw {
+  -webkit-transform: rotate(270deg);
+          transform: rotate(270deg);
+}
+.micsLeft.micshddn {
+  -webkit-transform: scaleX(0);
+          transform: scaleX(0);
+}
+.micsLeft .micsimage {
+  -webkit-box-ordinal-group: 4;
+      -ms-flex-order: 3;
+          order: 3;
+}
+.micsLeft .micsaction {
+  -webkit-box-ordinal-group: 2;
+      -ms-flex-order: 1;
+          order: 1;
+  text-align: left;
+}
+
+.micsdark {
+  background-color: #42464c;
+  color: #f8f8f8;
+  border-color: #f1703b;
+}
+.micsdark .micsclose {
+  color: #fff;
+}
+.micsdark .micscontent a {
+  color: steelblue;
+  opacity:0.9;
+  transition: .25s ease-in-out;
+}
+
+.micsdark .micscontent a:hover {
+  opacity:1;
+  transform:scale(1.02);
+}
+
+
+.micsdark .micsarw circle {
+  fill: #ab8063;
+}
+.micsdark .micsarw path {
+  fill: #42464c;
+}
+
+
+    .micshide{
+         display:none;
+    }
+
+   .micsTop.bannerhide,.micsBottom.bannerhide{
+	transform:scaleY(0);
+    }
+
+   .micsLeft.bannerhide,.micsRight.bannerhide{
+        transform:scaleX(0);
+    }
+
+   #mics_tpDiv .clx {
+            position: fixed;
+            top: 0px;
+            right: 0px;
+        width:50px;height:50px;color:white !important;
+            transition: transform .45s ease-in-out;
+    
+        }
+    
+    #micsbackdrop{
+        position:fixed;
+          width:100%;
+          height:100%;
+        top:0;left:0;bottom:0;right:0;
+          background-color: rgba(0,0,0,0.5);
+          z-index:10000001;         
+    }
+
+    #mics_tpDiv{
+            position:absolute;
+        top:175px;
+            width:50%;
+            left:30%;
+        width: 250px;
+        min-height: 100px;
+              z-index: 10000002;
+	box-sizing:border-box;
+    }
+
+ 
+
+    .clx:hover {
+        transition: 0.8s ease;
+        opacity:1;
+        cursor:pointer;
+    }
+.clx:before {
+    content: "";
+    position: absolute;
+    display: block;
+    margin: auto;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 13px;
+    height: 0;
+    border-top: 2px solid #000;
+    transform: rotate(45deg);
+    transform-origin: center;
+}
+.clx:after {
+    content: "";
+    position: absolute;
+    display: block;
+    margin: auto;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 13px;
+    height: 0;
+    border-top: 2px solid #000;
+    transform: rotate(-45deg);
+    transform-origin: center;
+}
+ 
+ #mics_tpDiv .clx:before {
+    width:20px;
+    border-top: 3px solid #ddd;
+ }
+ 
+ #mics_tpDiv iframe{
+    border:none;
+ }
+ 
+ #mics_tpDiv .clx:after {
+     width:20px;
+    border-top: 3px solid #ddd;
+ }
+ 
+.clx-txt{
+    font-size:11px;
+    opacity:0.8;
+    float:right;
+    position:relative;
+    top:3px;
+}
+ 
+.clx-txt:hover{
+    opacity:1;
+    cursor:pointer;
+}
+
+ 
+.micsloading:after {
+  content: ' .';
+  animation: micsdots 1s steps(5, end) infinite;
+}
+ 
+@keyframes micsdots {
+  0%, 20% {
+    color: rgba(0,0,0,0);
+    text-shadow:
+      .25em 0 0 rgba(0,0,0,0),
+      .5em 0 0 rgba(0,0,0,0);}
+  40% {
+    color: white;
+    text-shadow:
+      .25em 0 0 rgba(0,0,0,0),
+      .5em 0 0 rgba(0,0,0,0);}
+  60% {
+    text-shadow:
+      .25em 0 0 white,
+      .5em 0 0 rgba(0,0,0,0);}
+  80%, 100% {
+    text-shadow:
+      .25em 0 0 white,
+      .5em 0 0 white;}
+}
+
+
+
+
+/*$Id$*/
+
+.optionmsgRoot {
+  position: relative;
+  color: #444;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-top: 12px;
+}
+
+.optionmsgRoot > #inlabel[labeltrans="low"] {
+  position: absolute;
+  line-height: 20px;
+  left: 0px;
+  max-width: 90%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  top: 20px;
+  -webkit-transform-origin: top left;
+  transform-origin: top left;
+  white-space: nowrap;
+  font-size: 16px;
+  font-weight: 400;
+  font-family: Puvi;
+  min-height: 8px;
+  color: black;
+  transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);
+}
+
+.optionmsgRoot > #inlabel[labeltrans="high"] {
+  position: absolute;
+  line-height: 20px;
+  left: 0px;
+  top: -4px;
+  max-width: 90%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-transform-origin: top left;
+  transform-origin: top left;
+  white-space: nowrap;
+  font-size: 12px !important;
+  min-height: 8px;
+  color: rgb(41, 39, 39);
+  transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);
+}
+
+.optionmsgRoot > #inlabel[col="red"] {
+  position: absolute;
+  line-height: 20px;
+  left: 0px;
+  max-width: 90%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  top: 20px;
+  -webkit-transform-origin: top left;
+  transform-origin: top left;
+  white-space: nowrap;
+  font-size: 14px !important;
+  min-height: 8px;
+  color: rgb(240,72,62) !important;
+  transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);
+}
+
+.optionmsgRoot > .chipinputsend {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  align-items: center;
+}
+
+.optionmsgRoot > .chipinputsend > .chipinput {
+  display: flex;
+  position: relative;
+  width: 85%;
+  align-items: center;
+  flex-direction: row;
+  padding: 5px;
+  padding-left: 0px;
+}
+
+.optionmsgRoot > .chipinputsend > .chipinput > #selectedoption{
+ 
+  max-width:70%;
+
+}
+
+.optionmsgRoot > .chipinputsend > .chipinput > #selectedoption > .chip {
+  position: relative;
+  display: inline-flex;
+  font-size: 15px;
+  font-weight: 400;
+  font-family: Puvi;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 5px;
+  padding-right: 14px;
+  border-radius: 2px;
+  width:100%;
+  height: 22px;
+  white-space:nowrap;
+  background-color: #d8edff;
+  user-select: none;
+  overflow: hidden;
+  color: #343434;
+}
+.optionmsgRoot
+  > .chipinputsend
+  > .chipinput
+  > #selectedoption
+  > .chip
+  > #chipclose {
+  font-size: 12px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: #ededed;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  color: red;
+  visibility: hidden;
+}
+
+.optionmsgRoot
+  > .chipinputsend
+  > .chipinput
+  > #selectedoption
+  > .chip:hover
+  > #chipclose {
+  visibility: visible;
+}
+
+.optionmsgRoot
+  > .chipinputsend
+  > .chipinput
+  > #selectedoption
+  > .chip
+  > #chipclose:hover {
+  background: #ededed;
+}
+
+.optionmsgRoot > .chipinputsend > .chipinput > #search {
+  width: 100%;
+  line-height: 20px;
+  outline: none;
+  border: none;
+  align-self: center;
+  font-size: 18px;
+  padding-left: 5px;
+  background-color: transparent;
+  font: inherit;
+}
+
+.optionmsgRoot > .chipinputsend > .chipinput > #search:focus {
+  caret-color: #1976d2 !important;
+}
+
+.optionmsgRoot > .chipinputsend > #arrow[col="black"] {
+  position: absolute;
+  right: 8.5vw;
+  align-self: center;
+  display: inline-flex;
+  line-height: 1;
+  transition: all 0.5s;
+  color: grey !important;
+}
+
+.optionmsgRoot > .chipinputsend > #arrow[col="blue"] {
+  position: absolute;
+  right: 8.5vw;
+  transform: rotate(180deg);
+  transition: transform 0.5s ease;
+  color: rgb(72, 143, 239);
+  align-self: center;
+  display: inline-flex;
+  line-height: 1;
+  pointer-events: none;
+}
+
+.optionmsgRoot > .chipinputsend > #arrow[col="red"] {
+  position: absolute;
+  right: 8.5vw;
+  align-self: center;
+  display: inline-flex;
+  line-height: 1;
+  transition: all 0.5s;
+  color: rgb(240,72,62) !important;
+  cursor:pointer;
+}
+
+.optionmsgRoot > .chipinputsend > #send {
+  position: absolute;
+  right: 0vw;
+  font-size: 24px;
+  width: 24px;
+  color: rgb(72, 143, 239);
+  font-family: "Material Icons";
+  font-weight: normal;
+  font-style: normal;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  cursor: pointer;
+}
+
+.optionmsgRoot > #line[col="black"] {
+  width: 91%;
+  border: 0.8px solid rgb(185, 185, 185);
+  transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);
+}
+
+.optionmsgRoot > #line[col="blue"] {
+  width: 91%;
+  border: 0.8px solid rgb(72, 143, 239);
+  transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);
+}
+
+.optionmsgRoot > #line[col="red"] {
+  width: 91%;
+  border: 0.8px solid rgb(240,72,62);
+  transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);
+}
+
+
+.optionmsgRoot > .valueList {
+  position: absolute;
+  left: 0;
+  top: calc(100% + 2px);
+  width: 91%;
+  background: white;
+  border-radius: 0 0 0.25vw 0.25vw;
+  font-size: 16px;
+  z-index: 10;
+  max-height: 300px;
+  display: none;
+  overflow-x: hidden;
+  overflow-y: auto;
+  box-shadow: 0px 5px 5px -3px rgb(0 0 0 / 20%),0px 8px 10px 1px rgb(0 0 0 / 14%), 0px 3px 14px 2px rgb(0 0 0 / 12%);
+  box-sizing: border-box;
+}
+
+.optionmsgRoot > .valueList > .listItem {
+  height: 1.5vw;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.optionmsgRoot > .valueList > .valueListItem {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 8px;
+  user-select: none;
+  word-break: break-all;
+}
+
+.optionmsgRoot > .valueList > .valueListItem:hover {
+  background: #f5f5f5;
+}
+
+.optionmsgRoot > .valueList > .valueListItem:active {
+  background: #d1d1d1 !important;
+  transition: background 150ms ease-in-out;
+}
+
+.optionmsgRoot > .valueList[col="blue"],
+.optionmsgRoot > .valueList:active {
+  display: flex;
+  flex-direction: column;
+}
+
+
+/*$Id$*/
+* {
+  box-sizing: border-box;
+}
+html,
+body {
+  height: 100%;
+  overflow: hidden;
+  margin: 0px;
+}
+button {
+  outline: none;
+  border: none;
+}
+#Primarypanel {
+  position: relative;
+  height: 100%;
+  background-color: #fafafa;
+  font-family: Puvi;
+
+}
+.MessageTemplate{
+  background-color:white;
+}
+#Primarypanel > #Mainpanel {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+#Primarypanel > #Mainpanel > .MainpanelTopband {
+
+  background-color: #f5f5f5;
+  color: black;
+  font-size: 20px;
+  font-family: Puvi;
+  font-weight: 500;
+  z-index: 2;
+  box-shadow: 0px 2px 4px -1px rgb(0 0 0 / 20%), 0px 4px 5px 0px rgb(0 0 0 / 14%), 0px 1px 10px 0px rgb(0 0 0 / 12%);
+  border: none;
+}
+#Primarypanel > #Mainpanel > .MainpanelTopband > .TopbandElements {
+  position: relative;
+  display: inline-flex;
+  width: 100%;
+  height: 56px;
+  padding: 0 16px;
+  align-items: center;
+  justify-content: space-between !important;
+  font-weight: inherit;
+}
+#Primarypanel
+  > #Mainpanel
+  > .MainpanelTopband
+  > .TopbandElements
+  > .TopbandText {
+  font-weight: inherit;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: 1 !important;
+  letter-spacing: 0.02em !important;
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  word-break:break-word;
+  text-overflow: ellipsis;
+}
+#Primarypanel
+  > #Mainpanel
+  > .MainpanelTopband
+  > .TopbandElements
+  > .TopbandClose {
+  padding: 6px;
+  margin: 6px;
+  height:36px;
+  width:36px;
+  background-color: inherit;
+  border-radius: 50%;
+}
+#Primarypanel > #Mainpanel > #MainpanelBody {
+  height: 100%;
+}
+#Primarypanel > #Mainpanel > #MainpanelBody > .Genreselectbox {
+  height: 70px;
+  max-width: 250px;
+  padding-left: 16px !important;
+  padding-top: 16px !important;
+}
+#Primarypanel
+  > #Mainpanel
+  > #MainpanelBody
+  > .Genreselectbox
+  > #GenreselectionContainer {
+  padding: 0px 12px;
+  text-align: center;
+  background: rgb(243, 243, 243);
+  height: 30px;
+  min-height: 48px;
+  z-index: 1;
+  border:none;
+  border-radius:4px;
+}
+#Primarypanel
+  > #Mainpanel
+  > #MainpanelBody
+  > .Genreselectbox
+  > #GenreselectionContainer
+  > #Showgenreselect {
+  display: inline-flex;
+  width: 200px;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+}
+
+#Primarypanel
+  > #Mainpanel
+  > #MainpanelBody
+  > .Genreselectbox
+  > #GenreselectionContainer
+  > #Showgenreselect 
+  > #ShowgenreselectText{
+  font-size: 14px;
+  font-family: Puvi;
+  font-weight: 400;
+}
+
+#Primarypanel
+  > #Mainpanel
+  > #MainpanelBody
+  > .Genreselectbox
+  > #GenreselectionContainer
+  > #GenreselectoptionContainer {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  left: 14px;
+  top: 14px;
+  min-width: 236px;
+  max-width:300px;
+  z-index:1;
+  text-align: left;
+  background: rgb(255, 255, 255);
+  box-shadow: 0px 5px 5px -3px rgb(0 0 0 / 20%),
+    0px 8px 10px 1px rgb(0 0 0 / 14%), 0px 3px 14px 2px rgb(0 0 0 / 12%);
+  box-sizing: border-box;
+  max-height: 300px;
+  overflow: auto;
+  cursor: pointer;
+}
+#Primarypanel
+  > #Mainpanel
+  > #MainpanelBody
+  > .Genreselectbox
+  > #GenreselectionContainer
+  > #GenreselectoptionContainer
+  > .GenreselectionOptions {
+  display: inline-flex;
+  height: 40px;
+  font-size: 18px;
+  font-family: Puvi;
+  font-weight: 400;
+  padding: 10px 0px;
+  cursor: pointer;
+}
+#Primarypanel
+  > #Mainpanel
+  > #MainpanelBody
+  > .Genreselectbox
+  > #GenreselectionContainer
+  > #GenreselectoptionContainer
+  > .GenreselectionOptions
+  > #genreitemsIcon {
+  padding: 0px 10px;
+  font-size: inherit;
+  font-weight: inherit;
+  color: black;
+}
+#Primarypanel
+  > #Mainpanel
+  > #MainpanelBody
+  > .Genreselectbox
+  > #GenreselectionContainer
+  > #GenreselectoptionContainer
+  > .GenreselectionOptions
+  > #genreitemsIcon[tickcolor="white"] {
+  padding: 0px 10px;
+  font-size: inherit;
+  font-weight: inherit;
+  color: transparent;
+}
+#Primarypanel
+  > #Mainpanel
+  > #MainpanelBody
+  > .Genreselectbox
+  > #GenreselectionContainer
+  > #GenreselectoptionContainer
+  > .GenreselectionOptions
+  > .GenreitemsText {
+    font-size: inherit;
+    font-weight: inherit;
+    font-family: inherit;
+    color: black;
+}
+#Primarypanel
+  > #Mainpanel
+  > #MainpanelBody
+  > .Genreselectbox
+  > #GenreselectionContainer
+  > #GenreselectoptionContainer
+  > .GenreselectionOptions:hover {
+  background: #d2d2d22e;
+}
+#Primarypanel > #Mainpanel > #MainpanelBody > .MainpanelMessages {
+  overflow: hidden;
+  overflow-y: auto;
+  height: calc(100% - 126px);
+  line-height: 1.5;
+}
+#Primarypanel
+  > #Mainpanel
+  > #MainpanelBody
+  > .MainpanelMessages
+  > #MainpanelSeeHistory {
+  text-align: right !important;
+}
+#Primarypanel
+  > #Mainpanel
+  > #MainpanelBody
+  > .MainpanelMessages
+  > #MainpanelSeeHistory
+  > #Historytab {
+  text-transform: none;
+  padding: 0px 16px;
+  margin: 6px 8px;
+  height: 36px;
+  border-radius: 2px;
+  background-color: inherit;
+  display:flex;
+  float:right;
+  align-items:center;
+}
+
+#Primarypanel
+  > #Mainpanel
+  > #MainpanelBody
+  > .MainpanelMessages
+  > #MainpanelSeeHistory
+  > #Historytab
+  > .Notifymessage {
+    align-items: center;  
+    color: black;
+    font-family: Puvi;
+    font-weight: 500;
+    font-size:14px;
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    word-break:break-word;
+    text-overflow: ellipsis;
+}
+
+#Primarypanel > #Mainpanel > #MainpanelBody > #EmptyMainpanel {
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+}
+#Primarypanel
+  > #Mainpanel
+  > #MainpanelBody
+  > #EmptyMainpanel
+  > #nodataicon
+  > span {
+  font-size: 60px;
+}
+#Primarypanel > #Mainpanel > #MainpanelBody > #EmptyMainpanel > #nodataText {
+  padding: 4px 0px !important;
+  font-size: 16px;
+  font-family: Puvi;
+  font-weight: 400;
+  word-break:break-word;
+  text-align: center;
+}
+#Primarypanel
+  > #Mainpanel
+  > #MainpanelBody
+  > #EmptyMainpanel
+  > #NodataDescRiption {
+  padding: 8px !important;
+  font-size: 12px;
+  font-family: Puvi;  
+  font-weight: 400;
+  word-break:break-word;
+  text-align: center;
+}
+#Primarypanel
+  > #Mainpanel
+  > #MainpanelBody
+  > #EmptyMainpanel
+  > #Mainpanelhistorybuttoncontainer
+  > #Mainpanelhistorybutton {
+  position: relative;
+  box-shadow: 0px 3px 1px -2px rgb(0 0 0 / 20%),
+    0px 2px 2px 0px rgb(0 0 0 / 14%), 0px 1px 5px 0px rgb(0 0 0 / 12%);
+  padding: 0px 16px;
+  color: black;
+  align-items: center;
+  border-radius: 2px;
+  display: inline-flex;
+  height: 35px;
+  flex: 0 0 auto;
+  font-weight: 500;
+  font-family: Puvi;
+  font-size: 14px;
+  justify-content: center;
+  margin: 6px 8px;
+  min-width: 88px;
+  outline: 0;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1), color 1ms;
+  vertical-align: middle;
+  max-width:350px;
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
+  word-break:break-word; 
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  will-change: box-shadow;
+}
+#Primarypanel
+  > #Mainpanel
+  > #MainpanelBody
+  > #EmptyMainpanel
+  > #Mainpanelhistorybuttoncontainer
+  > #Mainpanelhistorybutton:hover {
+  opacity: 0.9;
+}
+#Primarypanel
+  > #Mainpanel
+  > #MainpanelBody
+  > #EmptyMainpanel
+  > #Mainpanelhistorybuttoncontainer
+  > #Mainpanelhistorybutton:active {
+  opacity: 0.8;
+  box-shadow: 0px 5px 5px -3px rgb(0 0 0 / 20%),
+    0px 8px 10px 1px rgb(0 0 0 / 14%), 0px 3px 14px 2px rgb(0 0 0 / 12%);
+  transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1), color 1ms;
+}
+#Primarypanel > #Historypanel {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+#Primarypanel
+  > #Historypanel
+  > .HistorypanelTopbandContainer{
+    background-color: #f5f5f5;
+    color: black;
+    font-size: 20px;
+    font-family: Puvi;
+    font-weight: 500;
+    z-index: 2;
+    box-shadow: 0px 2px 4px -1px rgb(0 0 0 / 20%), 0px 4px 5px 0px rgb(0 0 0 / 14%), 0px 1px 10px 0px rgb(0 0 0 / 12%);
+    border: none;
+  }
+
+#Primarypanel
+  > #Historypanel
+  > .HistorypanelTopbandContainer
+  > .TopbandElements {
+  display: flex;
+  width: 100%;
+  font-size: inherit;
+  font-family: inherit;
+  font-weight: inherit;
+  align-items: center;
+  justify-content: center;
+}
+#Primarypanel
+  > #Historypanel
+  > .HistorypanelTopbandContainer
+  > .TopbandElements
+  > #Historybackicon {
+  margin-left: 10px;
+  padding: 0px 6px;
+  height:36px;
+  width:36px;
+  background-color: inherit;
+  border-radius: 50%;
+}
+#Primarypanel
+  > #Historypanel
+  > .HistorypanelTopbandContainer
+  > .TopbandElements
+  > .HistoryTopband {
+  position: relative;
+  display: inline-flex;
+  width: 100%;
+  height: 56px;
+  padding-right: 16px;
+  padding-left: 6px;
+  font-size: inherit;
+  font-family: inherit;
+  font-weight: inherit;
+  align-items: center;
+  justify-content: space-between;
+  font-weight: inherit;
+}
+#Primarypanel
+  > #Historypanel
+  > .HistorypanelTopbandContainer
+  > .TopbandElements
+  > .HistoryTopband
+  > .TopbandText {
+  font-size: inherit;
+  font-family: inherit;
+  font-weight: inherit;
+  line-height: 1 !important;
+  letter-spacing: 0.02em !important;
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  word-break:break-word;
+  text-overflow: ellipsis;
+
+}
+#Primarypanel
+  > #Historypanel
+  > .HistorypanelTopbandContainer
+  > .TopbandElements
+  > .HistoryTopband
+  > .TopbandClose {
+  padding: 6px;
+  margin: 6px;
+  height:36px;
+  width:36px;
+  background-color: inherit;
+  border-radius: 50%;
+}
+
+  #Primarypanel > #Historypanel > #HistorypanelBody {
+    height: 100%;
+    overflow: auto;
+    position: relative;
+    line-height: 1.5;
+    display: flex;
+    justify-content: center;
+    overflow-x: hidden;
+  }
+
+  #Primarypanel > #Historypanel > #HistorypanelBody > .NoHistoryMessage{
+
+    padding-top: 16px;
+    font-size: 16px;
+    font-weight: 400;
+    font-family: Puvi;
+    color: black;
+    text-align:center;
+    word-break:break-word;
+
+  }
+
+#Primarypanel > #Historypanel > #HistoryPanelBody > #HistorypanelBodyMessages {
+    height: calc( 100% - 56px );
+    min-height: 80vh;
+  }
+  
+#Primarypanel
+  > #Mainpanel
+  > #MainpanelBody
+  > .Genreselectbox
+  > #GenreselectionContainer
+  > #GenreselectoptionContainer
+  > .Genreselectoption:hover {
+  background-color: #00000010;
+}
+#Primarypanel
+  > #Mainpanel
+  > .MainpanelTopband
+  > .TopbandElements
+  > .TopbandClose:hover,
+#Primarypanel
+  > #Mainpanel
+  > #MainpanelBody
+  > .MainpanelMessages
+  > #MainpanelSeeHistory
+  > #Historytab:hover,
+#Primarypanel
+  > #Historypanel
+  > .HistorypanelTopbandContainer
+  > .TopbandElements
+  > #Historybackicon:hover,
+#Primarypanel
+  > #Historypanel
+  > .HistorypanelTopbandContainer
+  > .TopbandElements
+  > .HistoryTopband
+  > .TopbandClose:hover {
+  background-color: #00000017;
+  transition: 0.5s cubic-bezier(0.25, 0.8, 0.5, 1);
+}
+.Ripple {
+  color: inherit;
+  border-radius: inherit;
+  position: absolute;
+  cursor: pointer;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  overflow: hidden;
+  z-index: 0;
+  contain: strict;
+}
+.Ripple:active {
+  background-color: #00000030;
+  opacity: 0.8;
+  transition: background 150ms ease-in-out;
+}
+.Rip {
+  cursor: pointer !important;
+  color:black;
+}
+.Rip:active {
+  background: #00000030 !important;
+  transition: background 150ms ease-in-out;
+}
+
+
+/*$Id$*/
+
+
+.BlogmessageContainer {
+  background-color: white;
+  font-family: Puvi;
+  font-weight: 400;
+  position: relative;
+  border: 0px solid rgb(218, 218, 218) !important;
+  border-radius: 5px;
+  cursor: pointer;
+  color: #757575;
+  margin: 15px;
+  width: calc(100vw - 30px);
+  overflow-wrap: break-word;
+}
+
+.BlogmessageContainer > .BlogmessageHeader {
+  color: inherit;
+  font-weight: 400;
+  font-size: 12px;
+  font-family: inherit;
+  display: inline-flex;
+  min-width: 100%;
+  align-items: center;
+  padding: 8px 16px;
+  justify-content: space-between;
+  word-break: break-word;
+}
+.BlogmessageContainer > .BlogmessageHeader > .BlogmessageSideHeaderText {
+  color: inherit;
+  font-weight: 400;
+  font-size: 12px;
+  font-family: inherit;
+}
+
+.BlogmessageContainer > .BlogmessageHeader > .BlogmessageCategory {
+  display: flex;
+  width: fit-content;
+  color: inherit;
+  font-weight: 400;
+  font-size: 12px;
+  font-family: inherit;
+}
+
+.BlogmessageContainer
+  > .BlogmessageHeader
+  > .BlogmessageCategory
+  > .BlogmessageGenre
+  > .GenreText {
+  color: inherit;
+  font-weight: 400;
+  font-size: 12px;
+  font-family: inherit;
+}
+
+.BlogmessageContainer > .BlogmessageHeading {
+  color: inherit;
+  font-size: 16px !important;
+  font-family: inherit;
+  font-weight: 400;
+  padding: 4px 16px;
+}
+.BlogmessageContainer > #blogImage {
+  object-fit: cover;
+  width: 100%;
+  height: 190px;
+  padding: 4px 16px;
+  background: no-repeat;
+}
+
+.BlogmessageContainer > #blogContent {
+  padding: 4px 16px;
+  color: inherit;
+  font-size: 16px !important;
+  font-family: inherit;
+  font-weight: 400;
+  line-height:1.5;
+}
+

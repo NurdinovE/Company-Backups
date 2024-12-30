@@ -1,0 +1,1 @@
+store.registerModel("campaign_status",{id:Lyte.attr("string"),name:Lyte.attr("string"),sequence_number:Lyte.attr("number")}),store.registerAdapter("campaign_status",{buildURL:function(t,e,a,r,s){return s=s.replace("campaign_status","Campaigns/status")}}),store.registerSerializer("campaign_status",{payloadKey:function(t){return t}});

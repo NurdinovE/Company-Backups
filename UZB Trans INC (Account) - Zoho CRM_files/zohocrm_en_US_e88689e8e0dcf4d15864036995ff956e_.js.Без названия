@@ -1,0 +1,1 @@
+I18n.setProperties({"crm.validation.rule.abaContent":"Please review the below alert message to continue","crm.validation.rule.abaConfirm":"Do you still want to proceed with saving?","crm.validation.rule.abaheading":"Review Alert","crm.validation.rule.topHeading":"Please rectify the below validation errors before saving the record"})

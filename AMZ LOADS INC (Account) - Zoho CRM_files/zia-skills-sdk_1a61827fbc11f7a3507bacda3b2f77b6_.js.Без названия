@@ -1,0 +1,120 @@
+if(typeof ziaskills === "undefined"){
+	var ziaskills={};
+	let versions = {};
+	Object.defineProperty(versions,"sdk",{ //NO I18N
+		value:"3.0.0-CRM", //NO I18N
+		writable:false
+	})
+	Object.defineProperty(versions,"lyteuicomp",{ //NO I18N
+		value:"3.6.0",
+		writable:false
+	})
+	Object.defineProperty(ziaskills,"versions",{ //NO I18N
+		value:versions,
+		writable:false
+	})
+}
+
+if(typeof ziapf === "undefined"){
+	var ziapf={};
+}
+
+if(typeof _ziaskills === "undefined"){
+	var _ziaskills={};
+}
+
+if(typeof ziapf.url_templates === "undefined"){
+	ziapf.url_templates = {};
+}
+
+ziaskills.init = function(info){
+	if(typeof info.zia_url === "undefined" || typeof info.zia_url !== "string"){
+		alert("either zia_url is missing or is not a string"); //NO I18N
+		return;
+	}
+	let static_urls = info.static_urls, proceed = false;
+	if(typeof static_urls === "string"){
+		static_urls = {
+			js_static_url:info.static_urls,
+			css_static_url:info.static_urls,
+			img_static_url:info.static_urls
+		}
+		proceed = true;
+	}
+	else if(typeof static_urls === "object"){
+		if(typeof static_urls.js_static_url === "undefined" || typeof static_urls.css_static_url ==="undefined" || typeof static_urls.img_static_url ==="undefined"){
+			alert("object type static_urls should contain js_static_url, css_static_url & img_static_url"); //NO I18N
+			return;
+		}
+		proceed = true;
+	}
+	else{
+		alert("static_urls should either be a string or an object"); //NO I18N
+		return;
+	}
+	if(proceed){
+
+		if(info.zia_url.endsWith("/")){
+			info.zia_url = info.zia_url.substr(0,info.zia_url.length - 1)
+		}
+
+		ziapf.baseUrl = info.zia_url;
+		ziapf.namespace="api/v1"; //NO I18N
+		
+		ziapf.apiUrl=info.zia_url+'/'+ziapf.namespace+"/clientcontract?client=web"; //NO I18N
+		ziapf.backupUrl=info.zia_url+'/'+ziapf.namespace+"/clientcontract?client=web"; //NO I18N
+
+		ziapf.userDefinedIcons = info.header_icons;
+
+		for(let url_type in static_urls){
+			ziapf.url_templates[url_type]=static_urls[url_type]
+		}
+
+	    ziapf.language =  info.language || 'EN';
+        var fingerprints = info.fingerprint_json || {}
+        ziapf.url_templates.fingerprints = fingerprints
+
+		var se = document.createElement('script');
+		se.onload = se.onreadystatechange = function(){
+			if ( this.readyState && this.readyState != "complete" && this.readyState != "loaded" ) {
+				return; 
+			}
+
+			this.onload = this.onreadystatechange = null; // ensure callback is only called once
+
+			if(!ziapf.essentials){
+				ziapf.essentials=true;
+				ziapf.onEssentials().then(function(){
+					if(zia.initCount<3){
+						zia.initCount++;
+						ziapf.getClientContract(undefined,undefined,false);
+						if(ziapf.url_templates.fingerprints["addons/@zia/ziaSkillsSdk/assets/css/icons.svg"]) {
+							let svgRelPath = ziapf.url_templates.fingerprints["addons/@zia/ziaSkillsSdk/assets/css/icons.svg"];
+							let svgRelPathSplit = svgRelPath.split('/');
+							document.documentElement.style.setProperty("--iconsPath", `url(${svgRelPathSplit[svgRelPathSplit.length-1]})`);
+						}
+					}
+				});
+			}
+			else{
+				if(zia.initCount<3){
+					zia.initCount++;
+					ziapf.getClientContract(undefined,undefined,false);
+					if(ziapf.url_templates.fingerprints["addons/@zia/ziaSkillsSdk/assets/css/icons.svg"]) {
+						let svgRelPath = ziapf.url_templates.fingerprints["addons/@zia/ziaSkillsSdk/assets/css/icons.svg"];
+						let svgRelPathSplit = svgRelPath.split('/');
+						document.documentElement.style.setProperty("--iconsPath", `url(${svgRelPathSplit[svgRelPathSplit.length-1]})`);
+					}
+				}
+			}
+
+		};
+		let sdkCorePath = "addons/@zia/ziaSkillsSdk/assets/js/zia-skills-sdk-core.js"; //NO I18N
+		if(fingerprints[sdkCorePath]) {
+		    sdkCorePath = fingerprints[sdkCorePath]
+		}
+		se.src = static_urls.js_static_url+ sdkCorePath;
+		var s1 = document.querySelector('head'); //NO I18N
+		s1.appendChild(se, s1);
+	}
+}

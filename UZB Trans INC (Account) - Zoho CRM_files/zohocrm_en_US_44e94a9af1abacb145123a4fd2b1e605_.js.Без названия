@@ -1,0 +1,1 @@
+I18n.setProperties({"crm.note.error.invalid.user":"User(s) mentioned in the note have been deactivated or deleted. Please remove the mentioned user(s) and try saving the note.","crm.note.error.message":"Action could not be completed"})
